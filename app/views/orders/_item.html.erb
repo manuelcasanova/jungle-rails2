@@ -5,7 +5,7 @@ Consider using a partial for rendering each line_item on the order details page.
 
 <tr>
 <td>
-    <%= product.image %>
+    <%= image_tag product.image.tiny.url %>
   </td>
   <td>
     <h4><%= product.name %></h4>
