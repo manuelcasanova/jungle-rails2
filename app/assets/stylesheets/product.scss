@@ -2,6 +2,16 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+.sold-out {
+  left: 0;
+  color: #fff;
+  background-color: red;
+  border-radius: 4px;
+  font-size: 0.9em;
+  padding: 5px;
+  border-bottom: 20px;
+}
+
 .products-show {
   margin-bottom: 5em;
   .page-header {
@@ -87,5 +97,6 @@
       font-weight: 700;
       text-align: center;
     }
+  
   }
 }
