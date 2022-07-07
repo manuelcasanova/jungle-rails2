@@ -111,3 +111,23 @@ form.button_to {
 .text-danger {
   color: #f38792 !important;
 }
+
+//For status on admin all sales
+
+.label {
+  padding: 5px;
+  color: white;
+  border-radius: 10%;
+}
+
+.label-danger {
+  background-color: #f44336;
+}
+
+.label-warning {
+  background-color: orange;
+}
+
+.label-success {
+  background-color: #4CAF50;
+}
