@@ -114,7 +114,7 @@ form.button_to {
 
 //For status on admin all sales
 
-.label {
+.label-danger, .label-warning, .label-success {
   padding: 5px;
   color: white;
   border-radius: 10%;
