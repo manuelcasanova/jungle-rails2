@@ -70,14 +70,14 @@ RSpec.describe User, type: :model do
       subject.password_confirmation = "1234567"
       expect(subject.errors.full_messages).to be_empty
     end
-
-    describe '.authenticate_with_credentials' do
-      it "authenticates when credentials are valid" do
-        subject.save!
-        auth = User.authenticate_with_credentials(subject.email, subject.password)
-        expect(auth).to eq subject
-      end
-    end
-
   end
+
+  describe '.authenticate_with_credentials' do
+    it "authenticates when credentials are valid" do
+      user = User.create(first_name: "Manuel", last_name: "Casanova", email: "manucasanova@hotmail.com", password: "password", password_confirmation: "password")
+      auth = User.authenticate_with_credentials(user.email, user.password)
+      expect(auth).to eq user
+    end
+  end
+
 end
