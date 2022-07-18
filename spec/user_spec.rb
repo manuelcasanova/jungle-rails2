@@ -1,6 +1,16 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
+  subject {
+    described_class.new(
+      first_name: "Manuel", 
+      last_name: "Casanova", 
+      email: "manucasanova@hotmail.com", 
+      password: "password", 
+      password_confirmation: "password"
+    )
+  }
+
 
   describe "Validations" do
     it "is valid with valid attributes" do
@@ -74,10 +84,23 @@ RSpec.describe User, type: :model do
 
   describe '.authenticate_with_credentials' do
     it "authenticates when credentials are valid" do
-      user = User.create(first_name: "Manuel", last_name: "Casanova", email: "manucasanova@hotmail.com", password: "password", password_confirmation: "password")
-      auth = User.authenticate_with_credentials(user.email, user.password)
-      expect(auth).to eq user
+      subject.save!
+      auth = User.authenticate_with_credentials(subject.email, subject.password)
+      expect(auth).to eq subject
     end
+
+    it "authenticates when email is correct but contains whitespace around it" do
+      subject.save!
+      auth = User.authenticate_with_credentials("   " + subject.email + "  ", subject.password)
+      expect(auth).to eq subject
+    end
+
+    it "authenticates when email is correct but in the wrong case" do
+      subject.save!
+      auth = User.authenticate_with_credentials("mAnuCaSanoVA@hotmAil.com", subject.password)
+      expect(auth).to eq subject
+    end
+
   end
 
 end
