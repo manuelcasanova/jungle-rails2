@@ -1,7 +1,8 @@
-///<reference types="cypress" />
+/// <reference types="cypress" />
+
 
 describe('jungle rails app', () => {
-  beforeEach(() => {  
+  beforeEach(() => {
     cy.visit('http://localhost:3000')
   })
 
@@ -13,10 +14,10 @@ describe('jungle rails app', () => {
     cy.get(".products article").should("have.length", 2);
   });
 
-  it("Navigates from the home page to the product detail page by clicking on a product", () => {
-    cy.get('.products article').first().click();
-    cy.get('.products-show').should("have.length", 1);
-  });
+  it ("Increases the amount of items in the cart by one when users click the Add to cart", () => {
+    cy.get(".btn").first().click({force:true});
+    cy.get('.nav-link').contains(1);
+  }); 
 
 
 })
